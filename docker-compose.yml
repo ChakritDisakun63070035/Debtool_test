@@ -2,12 +2,12 @@ version: "3"
 services:
   app:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - ./frontend:/app
     environment:
       - NODE_ENV=development
     command: npm run serve
