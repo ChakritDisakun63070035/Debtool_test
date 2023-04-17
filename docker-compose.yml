@@ -21,6 +21,6 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     command: >
-      sh -c "mysql -h 127.0.0.1 -u root -pexample Devtool.sql < /docker-entrypoint-initdb.d/init.sql"
+      sh -c "mysql -h 127.0.0.1 -u root -pexample Devtool.sql < /docker-entrypoint-initdb.d/Devtool.sql"
 volumes:
   db-data:
