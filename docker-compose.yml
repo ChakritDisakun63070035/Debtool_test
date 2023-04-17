@@ -19,7 +19,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: RKIhlx67
       MYSQL_DATABASE: devtool
-      MYSQL_USER: root
+      # MYSQL_USER: root
       MYSQL_PASSWORD: RKIhlx67
     ports:
       - "3306:3306"
