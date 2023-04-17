@@ -11,3 +11,14 @@ services:
     environment:
       - NODE_ENV=development
     command: npm run serve
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
