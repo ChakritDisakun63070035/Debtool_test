@@ -14,11 +14,11 @@ services:
     depends_on:
       - db
   db:
-  image: mysql:latest
-  restart: always
-  ports:
-    - "3306:3306"
-  volumes:
-    - "./Devtool.sql:/docker-entrypoint-initdb.d/Devtool.sql"
+    image: mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./Devtool.sql:/docker-entrypoint-initdb.d/Devtool.sql"
 volumes:
   db-data:
