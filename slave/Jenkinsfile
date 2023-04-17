@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'DOCKERHUB_CREDENTIALS_USR')
+        string(name: 'DOCKERHUB_CREDENTIALS_PSW')
+    }
+
+    stages {
+        stage('Trigger Stage') {
+            steps {
+                echo "Hello dockerhub."
+                echo "Username: ${params.DOCKERHUB_CREDENTIALS_USR}"
+            }
+        }
+        
+        stage('Initialize Stage') {
+            steps {
+                echo 'Initial : Delete  containers and images'
+                echo "Current path is ${pwd()}"
+                bat "docker-compose down --rmi all --volumes --remove-orphans"
+                bat "docker network prune"
+                bat "docker volume prune"
+            }
+        }
+        
+        stage('Login Stage') {
+            steps {
+                echo "Login : Logging in . . ."
+                bat "docker login -u ${params.DOCKERHUB_CREDENTIALS_USR} -p ${params.DOCKERHUB_CREDENTIALS_PSW}"
+            }
+        }
+
+        stage('Pull Stage') {
+            steps {
+                bat "docker-compose pull"
+            }
+        }
+        
+        stage('Run Stage') {
+            steps {
+            
+                bat "docker-compose up -d"
+                
+            }
+        }
+    }
+}
