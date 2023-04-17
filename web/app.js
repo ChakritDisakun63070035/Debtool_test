@@ -11,7 +11,7 @@ app.set('views', path.join(__dirname, 'views'))
 //     res.render('index')
 // })
 
-const indexRouter = require('../web/routes/index')
+const indexRouter = require('../frontend/routes/index')
 app.use(indexRouter.router)
 
 app.listen(3000, () =>{
